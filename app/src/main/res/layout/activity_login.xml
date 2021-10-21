@@ -12,6 +12,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/ed_username_p"
         android:layout_width="match_parent"
+        app:endIconMode="clear_text"
         android:layout_height="wrap_content">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -25,11 +26,13 @@
         android:id="@+id/ed_pass_p"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:endIconMode="password_toggle"
         android:layout_marginTop="16dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/ed_pass"
             android:layout_width="match_parent"
+            android:inputType="textPassword"
             android:layout_height="wrap_content"
             android:hint="Password" />
     </com.google.android.material.textfield.TextInputLayout>
