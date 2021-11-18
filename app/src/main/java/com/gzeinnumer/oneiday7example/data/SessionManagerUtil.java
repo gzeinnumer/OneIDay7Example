@@ -1,4 +1,4 @@
-package com.gzeinnumer.oneiday7example;
+package com.gzeinnumer.oneiday7example.data;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -10,6 +10,7 @@ public class SessionManagerUtil {
 
     public static final String SESSION_PREFERENCE = "com.example.basicandroid.SessionManagerUtil.SESSION_PREFERENCE";
     public static final String SESSION_TOKEN = "com.example.basicandroid.SessionManagerUtil.SESSION_TOKEN";
+    public static final String SESSION_TOKEN_API = "com.example.basicandroid.SessionManagerUtil.SESSION_TOKEN_API";
     public static final String SESSION_EXPIRY_TIME = "com.example.basicandroid.SessionManagerUtil.SESSION_EXPIRY_TIME";
 
     private static SessionManagerUtil INSTANCE;
@@ -47,6 +48,13 @@ public class SessionManagerUtil {
         SharedPreferences.Editor editor =
                 context.getSharedPreferences(SESSION_PREFERENCE, Context.MODE_PRIVATE).edit();
         editor.putString(SESSION_TOKEN, token);
+        editor.apply();
+    }
+
+    public void storeToken(Context context, String token){
+        SharedPreferences.Editor editor =
+                context.getSharedPreferences(SESSION_PREFERENCE, Context.MODE_PRIVATE).edit();
+        editor.putString(SESSION_TOKEN_API, token);
         editor.apply();
     }
 
