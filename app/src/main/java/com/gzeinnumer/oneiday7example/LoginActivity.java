@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.gzeinnumer.oneiday7example.base.BaseActivity;
 import com.gzeinnumer.oneiday7example.data.RetroServer;
 import com.gzeinnumer.oneiday7example.data.SessionManagerUtil;
 import com.gzeinnumer.oneiday7example.databinding.ActivityLoginBinding;
@@ -27,7 +28,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends BaseActivity {
 
     private ActivityLoginBinding binding;
 
@@ -63,13 +64,6 @@ public class LoginActivity extends AppCompatActivity {
         checkSession();
     }
 
-    private void checkSession() {
-        if (SessionManagerUtil.getInstance().isSessionActive(getApplicationContext(), new Date())) {
-            startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
-            finish();
-        }
-    }
-
     private void initOnclick() {
         binding.btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,7 +78,7 @@ public class LoginActivity extends AppCompatActivity {
         password = binding.edPass.getText().toString();
 
         if (TextUtils.isEmpty(username) && TextUtils.isEmpty(password)) {
-            Toast.makeText(getApplicationContext(), "Username dan password tidak boleh kosong!!", Toast.LENGTH_SHORT).show();
+            onShowToast("Username dan password tidak boleh kosong!!");
             return;
         }
 
