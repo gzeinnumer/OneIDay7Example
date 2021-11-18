@@ -52,33 +52,12 @@ public class LoginActivity extends AppCompatActivity {
 
         binding.edUsername.setText("demo@demo.com");
         binding.edPass.setText("demo123");
-//        binding.btnLogin.setOnClickListener(view -> {
-//            dummyAction();
-//        });
-//
+
         initView();
         initOnclick();
     }
 
     private static final String TAG = "testsasa";
-
-    private void dummyAction() {
-        username = binding.edUsername.getText().toString();
-        password = binding.edPass.getText().toString();
-        RetroServer.getInstance().login(username, password).enqueue(new Callback<LoginResponse>() {
-            @Override
-            public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
-                Log.d(TAG, "onResponse: " + response.code());
-                Log.d(TAG, "onResponse_: \n" + response.body().toString());
-            }
-
-            @Override
-            public void onFailure(Call<LoginResponse> call, Throwable t) {
-                Log.d(TAG, "onResponse: " + t.getMessage());
-            }
-        });
-
-    }
 
     private void initView() {
         checkSession();
@@ -109,17 +88,10 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-//        if (username.equalsIgnoreCase("user") && password.equalsIgnoreCase("pass")) {
-//            login();
-//        } else {
-//            Toast.makeText(getApplicationContext(), "Username dan password tidak cocok!!", Toast.LENGTH_SHORT).show();
-//            return;
-//        }
-
-
         RetroServer.getInstance().login(username, password).enqueue(new Callback<LoginResponse>() {
             @Override
             public void onResponse(@NonNull Call<LoginResponse> call, @NonNull Response<LoginResponse> response) {
+                Log.d(TAG, "onResponse1: " + response.code());
                 LoginResponse loginResponse = response.body();
                 if (loginResponse.isStatus()) {
                     token = loginResponse.getToken();
@@ -131,7 +103,7 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<LoginResponse> call, Throwable t) {
-                Log.d(TAG, "onResponse: " + t.getMessage());
+                Log.d(TAG, "onResponse2: " + t.getMessage());
             }
         });
     }
