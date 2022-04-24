@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OneIDay7Example">
         <activity android:name=".DashboardActivity"></activity>
-        <activity android:name=".LoginActivity">
+        <activity android:name=".LoginActivity" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
